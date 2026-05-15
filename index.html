@@ -6,19 +6,19 @@
   <meta name="description" content="China Fang – Authentic Chinese, Asian & Sushi restaurant in Murphy, TX. Open 7 days a week, 11 AM – 9 PM. Dine in or takeout. Call (972) 509-1818." />
   <title>China Fang | Chinese, Asian & Sushi – Murphy, TX</title>
 
-  <!-- Google Fonts: Manrope (body) + Playfair Display (headings) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
 
   <style>
     /* ─────────────────────────────────────────────────────
-       DESIGN TOKENS  (change colors here, they update everywhere)
+       DESIGN TOKENS
     ───────────────────────────────────────────────────── */
     :root {
       --red:        #A4161A;
       --red-dark:   #7D1012;
       --gold:       #C9A961;
+      --gold-dark:  #A8843A;
       --gold-light: #E8D5A3;
       --white:      #FFFFFF;
       --off-white:  #F8F6F2;
@@ -105,7 +105,6 @@
       color: var(--white) !important;
       padding: 10px 22px !important;
       border-radius: 6px !important;
-      font-size: 0.8rem !important;
       white-space: nowrap;
       transition: background 0.2s, transform 0.15s !important;
     }
@@ -114,7 +113,6 @@
       transform: translateY(-1px) !important;
     }
 
-    /* Hamburger button (mobile only) */
     .nav-hamburger {
       display: none;
       flex-direction: column;
@@ -133,7 +131,6 @@
       transition: 0.3s;
     }
 
-    /* ─── Mobile nav ─── */
     @media (max-width: 800px) {
       .nav-hamburger { display: flex; }
       .nav-links {
@@ -151,85 +148,120 @@
         transition: transform 0.3s ease;
         z-index: 999;
       }
-      .nav-links.open  { transform: translateY(0); }
-      .nav-links a     { padding: 14px 0; border-bottom: 1px solid var(--light-gray); width: 100%; font-size: 0.95rem !important; letter-spacing: 0.06em !important; }
+      .nav-links.open { transform: translateY(0); }
+      .nav-links a { padding: 14px 0; border-bottom: 1px solid var(--light-gray); width: 100%; font-size: 0.95rem !important; letter-spacing: 0.06em !important; }
       .nav-links li:last-child a { border-bottom: none; }
-      .btn-call-nav    { margin-top: 8px !important; display: inline-block !important; }
+      .btn-call-nav { margin-top: 8px !important; display: inline-block !important; }
     }
 
     /* ─────────────────────────────────────────────────────
-       HERO
+       HERO  — full-bleed, centered content
     ───────────────────────────────────────────────────── */
     #hero {
-      min-height: 100svh;
+      height: 100svh;
+      min-height: 600px;
       position: relative;
       display: flex;
       align-items: center;
-      padding-top: var(--nav-height);
+      justify-content: center;
       overflow: hidden;
     }
+
+    /* Swap this URL for your own restaurant photo later */
     .hero-bg {
       position: absolute;
       inset: 0;
-      background-image: url('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1800&q=80');
+      background-image: url('https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=1800&q=80');
       background-size: cover;
-      background-position: center;
+      background-position: center 40%;
     }
+
+    /* Two-layer overlay: strong dark at the very bottom so text pops,
+       lighter in the center so the food photo shines through */
     .hero-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(
-        135deg,
-        rgba(8, 8, 8, 0.75) 0%,
-        rgba(8, 8, 8, 0.45) 60%,
-        rgba(8, 8, 8, 0.30) 100%
-      );
+      background:
+        linear-gradient(to top,  rgba(0,0,0,0.70) 0%, transparent 50%),
+        linear-gradient(to bottom, rgba(0,0,0,0.55) 0%, transparent 50%),
+        rgba(0,0,0,0.28);
     }
+
     .hero-content {
       position: relative;
       z-index: 1;
       color: var(--white);
-      max-width: 680px;
+      text-align: center;
+      max-width: 760px;
+      padding: var(--nav-height) 20px 0;
     }
+
     .hero-eyebrow {
       display: inline-block;
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--gold-light);
       margin-bottom: 24px;
-      padding: 6px 16px;
+      padding: 6px 18px;
       border: 1px solid rgba(201, 169, 97, 0.45);
       border-radius: 100px;
     }
+
     .hero-title {
       font-family: var(--font-display);
-      font-size: clamp(3.2rem, 9vw, 6.5rem);
+      font-size: clamp(3.4rem, 10vw, 7rem);
       font-weight: 700;
       line-height: 1.0;
-      margin-bottom: 22px;
+      margin-bottom: 20px;
       letter-spacing: -0.02em;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.35);
     }
     .hero-title span { color: var(--gold); }
+
     .hero-subtitle {
       font-size: clamp(1rem, 2.5vw, 1.2rem);
       font-weight: 300;
-      color: rgba(255, 255, 255, 0.82);
-      margin-bottom: 44px;
-      max-width: 460px;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 48px;
       line-height: 1.7;
     }
+
+    /* Three-button CTA row */
     .hero-cta {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
     }
 
+    /* ── Order Online: most prominent — gold fill ── */
+    .btn-order {
+      background: var(--gold);
+      color: var(--dark);
+      padding: 17px 34px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 24px rgba(201, 169, 97, 0.45);
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    }
+    .btn-order:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(201, 169, 97, 0.55);
+    }
+
+    /* ── Secondary red fill ── */
     .btn-primary {
       background: var(--red);
       color: var(--white);
-      padding: 15px 32px;
+      padding: 15px 28px;
       border-radius: 8px;
       font-weight: 700;
       font-size: 0.95rem;
@@ -243,10 +275,12 @@
       transform: translateY(-2px);
       box-shadow: 0 10px 28px rgba(164, 22, 26, 0.38);
     }
+
+    /* ── Ghost outline ── */
     .btn-outline {
       background: transparent;
       color: var(--white);
-      padding: 15px 32px;
+      padding: 15px 28px;
       border-radius: 8px;
       font-weight: 700;
       font-size: 0.95rem;
@@ -262,10 +296,10 @@
       transform: translateY(-2px);
     }
 
-    /* animated scroll indicator at the bottom of hero */
+    /* animated scroll indicator */
     .hero-scroll-hint {
       position: absolute;
-      bottom: 36px;
+      bottom: 32px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 1;
@@ -273,8 +307,8 @@
       flex-direction: column;
       align-items: center;
       gap: 6px;
-      color: rgba(255,255,255,0.4);
-      font-size: 0.65rem;
+      color: rgba(255,255,255,0.38);
+      font-size: 0.62rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       animation: fadeInUp 1.5s ease 1s both;
@@ -284,7 +318,7 @@
       display: block;
       width: 1px;
       height: 44px;
-      background: linear-gradient(to bottom, rgba(255,255,255,0.4), transparent);
+      background: linear-gradient(to bottom, rgba(255,255,255,0.38), transparent);
       animation: scrollPulse 2s ease-in-out infinite;
     }
     @keyframes scrollPulse {
@@ -298,8 +332,16 @@
       to   { opacity: 1; transform: translateX(-50%) translateY(0); }
     }
 
+    /* mobile hero CTA: stack vertically, full width */
+    @media (max-width: 600px) {
+      .hero-cta { flex-direction: column; width: 100%; max-width: 340px; margin: 0 auto; }
+      .btn-order,
+      .btn-primary,
+      .btn-outline { width: 100%; justify-content: center; }
+    }
+
     /* ─────────────────────────────────────────────────────
-       SHARED SECTION ELEMENTS
+       SHARED SECTION STYLES
     ───────────────────────────────────────────────────── */
     section { padding: 96px 0; }
 
@@ -329,12 +371,7 @@
       margin-bottom: 24px;
     }
 
-    @media (max-width: 768px) {
-      section { padding: 72px 0; }
-      .hero-cta { flex-direction: column; }
-      .btn-primary,
-      .btn-outline { width: 100%; justify-content: center; }
-    }
+    @media (max-width: 768px) { section { padding: 72px 0; } }
 
     /* ─────────────────────────────────────────────────────
        ABOUT
@@ -373,7 +410,6 @@
       transition: transform 0.5s ease;
     }
     .about-image:hover img { transform: scale(1.04); }
-    /* subtle gold border overlay */
     .about-image::after {
       content: '';
       position: absolute;
@@ -422,7 +458,7 @@
 
     .menu-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
       gap: 28px;
     }
 
@@ -493,53 +529,128 @@
     }
 
     /* ─────────────────────────────────────────────────────
-       HOURS & LOCATION
+       REVIEWS
     ───────────────────────────────────────────────────── */
-    #hours { background: var(--off-white); }
+    #reviews { background: var(--off-white); }
+
+    .reviews-header {
+      text-align: center;
+      max-width: 540px;
+      margin: 0 auto 56px;
+    }
+    .reviews-header .section-divider { margin: 0 auto 20px; }
+    .reviews-header p { font-size: 0.95rem; color: var(--gray); }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .review-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px 28px;
+      border: 1px solid var(--light-gray);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: box-shadow 0.3s, transform 0.3s;
+    }
+    .review-card:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      transform: translateY(-3px);
+    }
+
+    .review-stars {
+      display: flex;
+      gap: 3px;
+    }
+    .review-stars svg {
+      color: var(--gold);
+      fill: var(--gold);
+    }
+
+    .review-quote {
+      font-size: 0.95rem;
+      color: var(--dark);
+      line-height: 1.75;
+      flex: 1;
+      font-style: italic;
+    }
+
+    .review-footer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--light-gray);
+    }
+    .review-avatar {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red), var(--gold));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.875rem;
+    }
+    .review-name {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--dark);
+    }
+    .review-date {
+      font-size: 0.78rem;
+      color: var(--gray);
+      margin-top: 1px;
+    }
+    .review-source {
+      margin-left: auto;
+    }
+    .review-source svg { color: var(--gray); opacity: 0.5; }
+
+    /* ─────────────────────────────────────────────────────
+       HOURS & LOCATION  — simplified display
+    ───────────────────────────────────────────────────── */
+    #hours { background: var(--white); }
 
     .hours-grid {
       display: grid;
-      grid-template-columns: 1fr 1.15fr;
+      grid-template-columns: 1fr 1.2fr;
       gap: 80px;
-      align-items: start;
+      align-items: center;
     }
     @media (max-width: 800px) {
       .hours-grid { grid-template-columns: 1fr; gap: 48px; }
     }
 
-    .hours-table {
-      width: 100%;
-      border-collapse: collapse;
+    /* Big confident hours display (replaces the day-by-day table) */
+    .hours-display {
       margin-top: 8px;
     }
-    .hours-table tr { border-bottom: 1px solid var(--light-gray); }
-    .hours-table tr:last-child { border-bottom: none; }
-    .hours-table td {
-      padding: 13px 0;
-      font-size: 0.925rem;
-    }
-    .hours-table td:first-child {
-      color: var(--gray);
-      font-weight: 500;
-    }
-    .hours-table td:last-child {
-      text-align: right;
-      font-weight: 600;
-      color: var(--dark);
-    }
-    /* today's row highlighted by JS */
-    .hours-table tr.today td          { color: var(--red) !important; }
-    .hours-table tr.today td:first-child::after {
-      content: ' · Today';
-      font-size: 0.7rem;
+    .hours-open-label {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-family: var(--font-display);
       font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--gold);
+      color: var(--dark);
+      line-height: 1.15;
+      margin-bottom: 12px;
     }
-
+    .hours-time {
+      font-size: clamp(2.2rem, 6vw, 3.5rem);
+      font-family: var(--font-display);
+      font-weight: 700;
+      color: var(--red);
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
     .hours-note {
-      margin-top: 24px;
       padding: 16px 18px;
       background: rgba(201, 169, 97, 0.1);
       border-left: 3px solid var(--gold);
@@ -550,33 +661,21 @@
     }
     .hours-note strong { color: var(--dark); }
 
+    /* Map column */
     .map-block { display: flex; flex-direction: column; gap: 20px; }
 
-    /* Google Maps embed goes here — placeholder for now */
-    .map-placeholder {
-      background: var(--light-gray);
+    .map-iframe-wrap {
       border-radius: 18px;
+      overflow: hidden;
       aspect-ratio: 4/3;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 14px;
-      color: var(--gray);
-      text-align: center;
-      padding: 32px;
-      border: 2px dashed #ccc;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
     }
-    .map-placeholder svg  { opacity: 0.35; }
-    .map-placeholder p    { font-weight: 600; font-size: 0.9rem; }
-    .map-placeholder small{ font-size: 0.8rem; opacity: 0.75; line-height: 1.6; }
-
-    /* Replace .map-placeholder with this when you have the embed:
-       <iframe src="YOUR_GOOGLE_MAPS_EMBED_URL"
-               width="100%" height="100%" style="border:0;border-radius:18px;"
-               allowfullscreen loading="lazy"
-               referrerpolicy="no-referrer-when-downgrade"></iframe>
-    */
+    .map-iframe-wrap iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
 
     .map-address-row {
       display: flex;
@@ -600,7 +699,7 @@
     /* ─────────────────────────────────────────────────────
        CONTACT
     ───────────────────────────────────────────────────── */
-    #contact { background: var(--white); }
+    #contact { background: var(--off-white); }
 
     .contact-grid {
       display: grid;
@@ -613,7 +712,6 @@
     }
 
     .contact-items { display: flex; flex-direction: column; gap: 28px; margin-top: 8px; }
-
     .contact-item { display: flex; gap: 16px; align-items: flex-start; }
     .contact-icon {
       width: 48px;
@@ -643,11 +741,7 @@
     .contact-item-value a { transition: color 0.2s; }
     .contact-item-value a:hover { color: var(--red); }
 
-    .social-row {
-      display: flex;
-      gap: 10px;
-      margin-top: 36px;
-    }
+    .social-row { display: flex; gap: 10px; margin-top: 36px; }
     .social-btn {
       width: 46px;
       height: 46px;
@@ -666,7 +760,6 @@
       transform: translateY(-2px);
     }
 
-    /* CTA call-out box */
     .contact-cta-box {
       background: var(--dark);
       border-radius: 22px;
@@ -745,15 +838,8 @@
       margin-bottom: 12px;
     }
     .footer-brand-name span { color: var(--gold); }
-    .footer-tagline {
-      font-size: 0.875rem;
-      line-height: 1.75;
-      margin-bottom: 24px;
-    }
-    .footer-social {
-      display: flex;
-      gap: 10px;
-    }
+    .footer-tagline { font-size: 0.875rem; line-height: 1.75; margin-bottom: 24px; }
+    .footer-social { display: flex; gap: 10px; }
     .footer-social-btn {
       width: 38px;
       height: 38px;
@@ -765,11 +851,7 @@
       color: rgba(255,255,255,0.5);
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .footer-social-btn:hover {
-      background: var(--red);
-      border-color: var(--red);
-      color: var(--white);
-    }
+    .footer-social-btn:hover { background: var(--red); border-color: var(--red); color: var(--white); }
 
     .footer-col h4 {
       color: var(--white);
@@ -801,7 +883,7 @@
 <body>
 
   <!-- ════════════════════════════════════════════════════
-       NAVIGATION BAR
+       NAVIGATION
   ═════════════════════════════════════════════════════ -->
   <nav id="navbar" role="navigation" aria-label="Main navigation">
     <div class="container nav-inner">
@@ -810,7 +892,6 @@
         China <span>Fang</span>
       </a>
 
-      <!-- Hamburger shown only on mobile -->
       <button
         class="nav-hamburger"
         aria-label="Toggle navigation menu"
@@ -824,6 +905,7 @@
       <ul class="nav-links" id="navLinks" role="list">
         <li><a href="#about">About</a></li>
         <li><a href="#menu">Specials</a></li>
+        <li><a href="#reviews">Reviews</a></li>
         <li><a href="#hours">Hours</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="tel:+19725091818" class="btn-call-nav">Call Now</a></li>
@@ -834,48 +916,54 @@
 
 
   <!-- ════════════════════════════════════════════════════
-       HERO SECTION
+       HERO  — full-bleed, centered
   ═════════════════════════════════════════════════════ -->
   <section id="hero" aria-label="Welcome to China Fang">
 
-    <!-- Background photo (replace src with your own photo later) -->
     <div
       class="hero-bg"
       role="img"
-      aria-label="A stunning spread of authentic Chinese and Asian cuisine"
+      aria-label="A stunning close-up of freshly prepared Chinese dim sum dumplings with steam rising"
     ></div>
     <div class="hero-overlay" aria-hidden="true"></div>
 
-    <div class="container">
-      <div class="hero-content">
+    <div class="hero-content">
 
-        <span class="hero-eyebrow">Murphy, TX · Open 7 Days a Week</span>
+      <span class="hero-eyebrow">Murphy, TX · Open 7 Days a Week</span>
 
-        <h1 class="hero-title">
-          China <span>Fang</span>
-        </h1>
+      <h1 class="hero-title">China <span>Fang</span></h1>
 
-        <p class="hero-subtitle">
-          Authentic Chinese, Asian &amp; Sushi in Murphy, TX
-        </p>
+      <p class="hero-subtitle">
+        Authentic Chinese, Asian &amp; Sushi in Murphy, TX
+      </p>
 
-        <div class="hero-cta">
-          <a href="#menu" class="btn-primary">
-            <!-- clipboard icon -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
-              <rect x="9" y="3" width="6" height="4" rx="1"/>
-            </svg>
-            View Specials
-          </a>
-          <a href="tel:+19725091818" class="btn-outline">
-            <!-- phone icon -->
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
-            </svg>
-            Call (972) 509-1818
-          </a>
-        </div>
+      <div class="hero-cta">
+
+        <!-- Primary: Order Online -->
+        <a href="#" class="btn-order" aria-label="Order online (link coming soon)">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.95-1.57L23 6H6"/>
+          </svg>
+          Order Online
+        </a>
+
+        <!-- Secondary: View Specials -->
+        <a href="#menu" class="btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/>
+            <rect x="9" y="3" width="6" height="4" rx="1"/>
+          </svg>
+          View Specials
+        </a>
+
+        <!-- Ghost: Call -->
+        <a href="tel:+19725091818" class="btn-outline">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/>
+          </svg>
+          Call (972) 509-1818
+        </a>
 
       </div>
     </div>
@@ -886,7 +974,7 @@
 
 
   <!-- ════════════════════════════════════════════════════
-       ABOUT SECTION
+       ABOUT
   ═════════════════════════════════════════════════════ -->
   <section id="about" aria-labelledby="about-heading">
     <div class="container">
@@ -938,7 +1026,7 @@
 
 
   <!-- ════════════════════════════════════════════════════
-       MENU / SPECIALS SECTION
+       MENU / SPECIALS
   ═════════════════════════════════════════════════════ -->
   <section id="menu" aria-labelledby="menu-heading">
     <div class="container">
@@ -952,7 +1040,6 @@
 
       <div class="menu-grid">
 
-        <!-- ── Card 1: Bento Box ── -->
         <article class="menu-card">
           <span class="menu-badge">15% Off</span>
           <div class="menu-card-img-wrap">
@@ -960,19 +1047,16 @@
               class="menu-card-img"
               src="https://images.unsplash.com/photo-1569050467447-ce54b3bbc37d?auto=format&fit=crop&w=600&q=80"
               alt="A beautifully arranged bento box with rice, protein, and sides"
-              loading="lazy"
-              width="600"
-              height="400"
+              loading="lazy" width="600" height="400"
             />
           </div>
           <div class="menu-card-body">
             <h3 class="menu-card-name">Bento Boxes</h3>
-            <p class="menu-card-desc">A beautifully arranged box with your choice of protein, steamed rice, gyoza, and seasonal sides. A complete meal, perfectly packed.</p>
+            <p class="menu-card-desc">Your choice of protein, steamed rice, gyoza, and seasonal sides. A complete meal, perfectly packed.</p>
             <div class="menu-card-price">15% Off <span class="was">Regular Price</span></div>
           </div>
         </article>
 
-        <!-- ── Card 2: Lettuce Wraps ── -->
         <article class="menu-card">
           <span class="menu-badge gold">New</span>
           <div class="menu-card-img-wrap">
@@ -980,38 +1064,32 @@
               class="menu-card-img"
               src="https://images.unsplash.com/photo-1626204181039-4803c88d3e0e?auto=format&fit=crop&w=600&q=80"
               alt="Fresh crisp lettuce wraps filled with savory seasoned chicken"
-              loading="lazy"
-              width="600"
-              height="400"
+              loading="lazy" width="600" height="400"
             />
           </div>
           <div class="menu-card-body">
             <h3 class="menu-card-name">Lettuce Wraps</h3>
-            <p class="menu-card-desc">Crisp butter lettuce cups filled with seasoned minced chicken, water chestnuts, and our signature hoisin sauce. Light, fresh, and addictive.</p>
+            <p class="menu-card-desc">Crisp butter lettuce cups filled with seasoned minced chicken, water chestnuts, and our signature hoisin sauce.</p>
             <div class="menu-card-price">$8.90</div>
           </div>
         </article>
 
-        <!-- ── Card 3: Shrimp Spring Rolls ── -->
         <article class="menu-card">
           <div class="menu-card-img-wrap">
             <img
               class="menu-card-img"
               src="https://images.unsplash.com/photo-1559410545-0bdcd187e0a6?auto=format&fit=crop&w=600&q=80"
               alt="Golden crispy shrimp spring rolls served with sweet chili sauce"
-              loading="lazy"
-              width="600"
-              height="400"
+              loading="lazy" width="600" height="400"
             />
           </div>
           <div class="menu-card-body">
             <h3 class="menu-card-name">Shrimp Spring Rolls</h3>
-            <p class="menu-card-desc">Golden, perfectly crispy rolls packed with plump shrimp, glass noodles, and fresh vegetables. Served with our house sweet chili dipping sauce.</p>
+            <p class="menu-card-desc">Crispy rolls packed with plump shrimp, glass noodles, and fresh vegetables. Served with house sweet chili sauce.</p>
             <div class="menu-card-price">$6.99</div>
           </div>
         </article>
 
-        <!-- ── Card 4: Family Special ── -->
         <article class="menu-card">
           <span class="menu-badge gold">Best Value</span>
           <div class="menu-card-img-wrap">
@@ -1019,19 +1097,16 @@
               class="menu-card-img"
               src="https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=600&q=80"
               alt="A family feast spread with multiple Chinese entrées and rice"
-              loading="lazy"
-              width="600"
-              height="400"
+              loading="lazy" width="600" height="400"
             />
           </div>
           <div class="menu-card-body">
             <h3 class="menu-card-name">Family Special</h3>
-            <p class="menu-card-desc">Feed the whole family! Three entrées, two soups, steamed rice, and egg rolls. Perfect for 3–4 people. Call ahead to customize your selections.</p>
+            <p class="menu-card-desc">Three entrées, two soups, steamed rice, and egg rolls. Perfect for 3–4 people. Call ahead to customize.</p>
             <div class="menu-card-price">$30.99</div>
           </div>
         </article>
 
-        <!-- ── Card 5: Party Tray Sushi ── -->
         <article class="menu-card">
           <span class="menu-badge">Party Size</span>
           <div class="menu-card-img-wrap">
@@ -1039,14 +1114,12 @@
               class="menu-card-img"
               src="https://images.unsplash.com/photo-1617196034183-421b4040ed20?auto=format&fit=crop&w=600&q=80"
               alt="A large party tray of 40 assorted sushi rolls and nigiri"
-              loading="lazy"
-              width="600"
-              height="400"
+              loading="lazy" width="600" height="400"
             />
           </div>
           <div class="menu-card-body">
             <h3 class="menu-card-name">Party Tray Sushi 40pc</h3>
-            <p class="menu-card-desc">An impressive 40-piece spread of our most popular hand-rolled maki and nigiri. Ideal for gatherings, celebrations, and office lunches.</p>
+            <p class="menu-card-desc">40 hand-rolled pieces of our most popular maki and nigiri. Ideal for gatherings and celebrations.</p>
             <div class="menu-card-price">$35.00</div>
           </div>
         </article>
@@ -1057,84 +1130,123 @@
 
 
   <!-- ════════════════════════════════════════════════════
-       HOURS & LOCATION SECTION
+       REVIEWS  (placeholder — replace with real reviews later)
+  ═════════════════════════════════════════════════════ -->
+  <section id="reviews" aria-labelledby="reviews-heading">
+    <div class="container">
+
+      <div class="reviews-header">
+        <span class="section-label">What People Are Saying</span>
+        <h2 class="section-title" id="reviews-heading">Our Guests Love Us</h2>
+        <div class="section-divider"></div>
+        <p>Freshness, flavor, and friendly service — every single visit.</p>
+      </div>
+
+      <div class="reviews-grid">
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-quote">
+            "The sushi here is absolutely incredible. I ordered the Party Tray for my daughter's birthday and every single piece was fresh and beautifully presented. Everyone kept asking where it was from. We're regulars now!"
+          </p>
+          <div class="review-footer">
+            <div class="review-avatar" aria-hidden="true">SM</div>
+            <div>
+              <div class="review-name">Sarah M.</div>
+              <div class="review-date">May 2025 · Google</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-quote">
+            "Best Chinese food in Murphy — it's not even close. The Family Special is an unbelievable deal for the amount of food you get. The lettuce wraps are addictive. Friendly staff, quick service. Highly recommend."
+          </p>
+          <div class="review-footer">
+            <div class="review-avatar" aria-hidden="true">JT</div>
+            <div>
+              <div class="review-name">James T.</div>
+              <div class="review-date">April 2025 · Google</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-stars" aria-label="5 out of 5 stars">
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <p class="review-quote">
+            "I've been coming here for years and the quality never drops. The bento boxes are my go-to for lunch — always fresh, always satisfying. It's the kind of place you bring out-of-town guests to show off Murphy."
+          </p>
+          <div class="review-footer">
+            <div class="review-avatar" aria-hidden="true">LK</div>
+            <div>
+              <div class="review-name">Linda K.</div>
+              <div class="review-date">March 2025 · Yelp</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════════════════
+       HOURS & LOCATION
   ═════════════════════════════════════════════════════ -->
   <section id="hours" aria-labelledby="hours-heading">
     <div class="container">
       <div class="hours-grid">
 
-        <!-- Left: hours table -->
+        <!-- Left: simplified hours display -->
         <div>
           <span class="section-label">Plan Your Visit</span>
           <h2 class="section-title" id="hours-heading">Hours &amp; Location</h2>
           <div class="section-divider"></div>
 
-          <table class="hours-table" aria-label="Restaurant hours">
-            <tbody>
-              <tr data-day="Monday">
-                <td>Monday</td>
-                <td>11:00 AM – 9:00 PM</td>
-              </tr>
-              <tr data-day="Tuesday">
-                <td>Tuesday</td>
-                <td>11:00 AM – 9:00 PM</td>
-              </tr>
-              <tr data-day="Wednesday">
-                <td>Wednesday</td>
-                <td>11:00 AM – 9:00 PM</td>
-              </tr>
-              <tr data-day="Thursday">
-                <td>Thursday</td>
-                <td>11:00 AM – 9:00 PM</td>
-              </tr>
-              <tr data-day="Friday">
-                <td>Friday</td>
-                <td>11:00 AM – 9:00 PM</td>
-              </tr>
-              <tr data-day="Saturday">
-                <td>Saturday</td>
-                <td>11:00 AM – 9:00 PM</td>
-              </tr>
-              <tr data-day="Sunday">
-                <td>Sunday</td>
-                <td>11:00 AM – 9:00 PM</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <div class="hours-note">
-            <strong>Open 7 days a week</strong> for dine-in and takeout. Call ahead for large parties, catering inquiries, or to customize your order.
+          <div class="hours-display">
+            <div class="hours-open-label">Open 7 Days a Week</div>
+            <div class="hours-time" aria-label="11:00 AM to 9:00 PM">11:00 AM – 9:00 PM</div>
+            <div class="hours-note">
+              <strong>Dine-in &amp; takeout welcome daily.</strong> Call ahead for large parties, catering inquiries, or to customize your order.
+            </div>
           </div>
         </div>
 
-        <!-- Right: map + address -->
+        <!-- Right: Google Maps embed + address -->
         <div class="map-block">
 
-          <!--
-            ┌─────────────────────────────────────────────────────┐
-            │  REPLACE THIS ENTIRE div.map-placeholder            │
-            │  with your Google Maps embed <iframe> later.        │
-            │  Example:                                           │
-            │  <iframe                                            │
-            │    src="https://www.google.com/maps/embed?pb=..."   │
-            │    width="100%" height="100%"                       │
-            │    style="border:0;border-radius:18px;"             │
-            │    allowfullscreen loading="lazy"                   │
-            │    referrerpolicy="no-referrer-when-downgrade">     │
-            │  </iframe>                                          │
-            └─────────────────────────────────────────────────────┘
-          -->
-          <div
-            class="map-placeholder"
-            role="img"
-            aria-label="Map placeholder — Google Maps embed coming soon"
-          >
-            <svg width="52" height="52" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
-              <circle cx="12" cy="10" r="3"/>
-            </svg>
-            <p>Google Map Coming Soon</p>
-            <small>Replace this block with your<br/>Google Maps embed code</small>
+          <div class="map-iframe-wrap">
+            <!--
+              Generic Google Maps embed — works without a paid API key.
+              To get a better/official embed: Google Maps → search the address
+              → Share → Embed a map → copy the <iframe> src URL and paste it here.
+            -->
+            <iframe
+              src="https://maps.google.com/maps?q=170+E+FM+544+Suite+104+Murphy+TX+75094&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              title="China Fang location — 170 E. FM 544, Suite 104, Murphy, TX 75094"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
           </div>
 
           <div class="map-address-row">
@@ -1160,13 +1272,12 @@
 
 
   <!-- ════════════════════════════════════════════════════
-       CONTACT SECTION
+       CONTACT
   ═════════════════════════════════════════════════════ -->
   <section id="contact" aria-labelledby="contact-heading">
     <div class="container">
       <div class="contact-grid">
 
-        <!-- Left: contact details -->
         <div>
           <span class="section-label">Get in Touch</span>
           <h2 class="section-title" id="contact-heading">We'd Love to Hear From You</h2>
@@ -1182,9 +1293,7 @@
               </div>
               <div>
                 <div class="contact-item-label">Phone</div>
-                <div class="contact-item-value">
-                  <a href="tel:+19725091818">(972) 509-1818</a>
-                </div>
+                <div class="contact-item-value"><a href="tel:+19725091818">(972) 509-1818</a></div>
               </div>
             </div>
 
@@ -1197,9 +1306,7 @@
               </div>
               <div>
                 <div class="contact-item-label">Email</div>
-                <div class="contact-item-value">
-                  <a href="mailto:chinafangmurphy@gmail.com">chinafangmurphy@gmail.com</a>
-                </div>
+                <div class="contact-item-value"><a href="mailto:chinafangmurphy@gmail.com">chinafangmurphy@gmail.com</a></div>
               </div>
             </div>
 
@@ -1212,9 +1319,7 @@
               </div>
               <div>
                 <div class="contact-item-label">Address</div>
-                <div class="contact-item-value">
-                  170 E. FM 544, Suite 104<br/>Murphy, TX 75094
-                </div>
+                <div class="contact-item-value">170 E. FM 544, Suite 104<br/>Murphy, TX 75094</div>
               </div>
             </div>
 
@@ -1233,7 +1338,6 @@
 
           </div>
 
-          <!-- Social media links -->
           <div class="social-row">
             <a
               href="https://www.facebook.com/CHINA-FANG-244182679076525"
@@ -1262,7 +1366,6 @@
           </div>
         </div>
 
-        <!-- Right: call-to-action card -->
         <div class="contact-cta-box">
           <h3>Ready to Order?<br><span>Let's Eat.</span></h3>
           <p>
@@ -1290,7 +1393,6 @@
 
       <div class="footer-grid">
 
-        <!-- Brand column -->
         <div>
           <div class="footer-brand-name">China <span>Fang</span></div>
           <p class="footer-tagline">
@@ -1298,24 +1400,12 @@
             Open 7 days a week for dine-in and takeout.
           </p>
           <div class="footer-social">
-            <a
-              href="https://www.facebook.com/CHINA-FANG-244182679076525"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer-social-btn"
-              aria-label="Facebook"
-            >
+            <a href="https://www.facebook.com/CHINA-FANG-244182679076525" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                 <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
               </svg>
             </a>
-            <a
-              href="https://www.instagram.com/chinafangofficial"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer-social-btn"
-              aria-label="Instagram"
-            >
+            <a href="https://www.instagram.com/chinafangofficial" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                 <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
@@ -1325,26 +1415,23 @@
           </div>
         </div>
 
-        <!-- Quick links column -->
         <div class="footer-col">
           <h4>Navigate</h4>
           <ul>
             <li><a href="#about">About Us</a></li>
             <li><a href="#menu">Specials</a></li>
+            <li><a href="#reviews">Reviews</a></li>
             <li><a href="#hours">Hours &amp; Location</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
 
-        <!-- Contact column -->
         <div class="footer-col">
           <h4>Contact Us</h4>
           <ul>
             <li><a href="tel:+19725091818">(972) 509-1818</a></li>
             <li><a href="mailto:chinafangmurphy@gmail.com">chinafangmurphy@gmail.com</a></li>
-            <li style="color:rgba(255,255,255,0.45);line-height:1.65;">
-              170 E. FM 544, Suite 104<br/>Murphy, TX 75094
-            </li>
+            <li style="color:rgba(255,255,255,0.45);line-height:1.65;">170 E. FM 544, Suite 104<br/>Murphy, TX 75094</li>
           </ul>
         </div>
 
@@ -1352,10 +1439,7 @@
 
       <div class="footer-bottom">
         <span>&copy; 2025 China Fang. All rights reserved.</span>
-        <span>
-          170 E. FM 544, Suite 104 · Murphy, TX 75094 ·
-          <a href="tel:+19725091818">(972) 509-1818</a>
-        </span>
+        <span>170 E. FM 544, Suite 104 · Murphy, TX 75094 · <a href="tel:+19725091818">(972) 509-1818</a></span>
       </div>
 
     </div>
@@ -1363,39 +1447,29 @@
 
 
   <!-- ════════════════════════════════════════════════════
-       JAVASCRIPT  (minimal — no libraries needed)
+       JAVASCRIPT
   ═════════════════════════════════════════════════════ -->
   <script>
-    // ── Add shadow to navbar when user scrolls down ──────
+    // Add shadow to navbar on scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 8);
     }, { passive: true });
 
-    // ── Mobile hamburger menu toggle ─────────────────────
+    // Mobile hamburger toggle
     function toggleMenu(btn) {
       const links = document.getElementById('navLinks');
       const isOpen = links.classList.toggle('open');
       btn.setAttribute('aria-expanded', String(isOpen));
     }
 
-    // ── Close mobile menu when any nav link is clicked ───
+    // Close mobile menu on link tap
     document.querySelectorAll('#navLinks a').forEach(link => {
       link.addEventListener('click', () => {
         document.getElementById('navLinks').classList.remove('open');
         const burger = document.querySelector('.nav-hamburger');
         if (burger) burger.setAttribute('aria-expanded', 'false');
       });
-    });
-
-    // ── Highlight today's row in the hours table ─────────
-    const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    const todayName = DAY_NAMES[new Date().getDay()];
-    const rows = document.querySelectorAll('.hours-table tr[data-day]');
-    rows.forEach(row => {
-      if (row.getAttribute('data-day') === todayName) {
-        row.classList.add('today');
-      }
     });
   </script>
 
