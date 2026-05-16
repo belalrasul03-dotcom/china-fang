@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls \"C:\\\\Users\\\\rasul\\\\Documents\\\\GitHub\\\\\" 2>/dev/null || echo \"GitHub folder not found\")",
+      "Read(//c/Users/rasul/Documents/GitHub\" 2>/dev/**)"
+    ]
+  }
+}
